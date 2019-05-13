@@ -1,16 +1,17 @@
 class User {
 
 
-
     constructor(FirstName, LastName, StreetAddress, PostalCode, City, DateOfBirth, PhoneNumber, Email, Password,) {
 
-
-            (this.postalCode = this.validatePostalCode(PostalCode)),
-            (this.city = this.validateCity(City)),
-            (this.dateOfBirth = this.validateDateOfBirth(DateOfBirth)),
-            (this.phoneNumber = this.validatePhoneNumber(PhoneNumber)),
-            (this.email = this.validateEmail(Email)),
-             this.password = Password;
+            this.firstName = FirstName,
+            this.lastName = LastName,
+            this.streetAddress = StreetAddress,
+            this.postalCode = this.validatePostalCode(PostalCode),
+            this.city = this.validateCity(City),
+            this.dateOfBirth = this.validateDateOfBirth(DateOfBirth),
+            this.phoneNumber = this.validatePhoneNumber(PhoneNumber),
+            this.email = this.validateEmail(Email),
+            this.password = Password;
     }
 
 
@@ -52,15 +53,14 @@ class User {
     }
 
 
-
     validateEmail(email) {
-            const regex = new RegExp('^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$');
-            if (regex.test(email)) {
-                return email;
-            } else {
-                throw new Error("Invalid Email: " + email.substring(1, 10));
-            }
+        const regex = new RegExp('^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$');
+        if (regex.test(email)) {
+            return email;
+        } else {
+            throw new Error("Invalid Email: " + email.substring(1, 10));
         }
+    }
 }
 
 module.exports = User;
