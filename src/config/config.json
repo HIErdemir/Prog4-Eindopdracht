@@ -1,0 +1,20 @@
+{
+  "local": {
+    "secretkey": "MyServerSuperSecretKey-123454321AbCd-",
+    "dbUsername": "",
+    "dbPassword": "",
+    "dbSchema": "",
+    "dbServer": "localhost",
+    "port": ""
+  },
+  "remote": {
+    "secretkey": "MyServerSuperSecretKey-123454321AbCd-",
+    "dbUsername": "2019-I14",
+    "dbPassword": "2019-I14",
+    "dbSchema": "2019-I14-APPARTEMENTEN",
+    "dbServer": "coolsma.synology.me",
+    "port": "1443"
+  }
+}
+
+
