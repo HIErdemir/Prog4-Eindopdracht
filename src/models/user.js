@@ -1,7 +1,7 @@
 class User {
 
 
-    constructor(FirstName, LastName, StreetAddress, PostalCode, City, DateOfBirth, PhoneNumber, Email, Password,) {
+    constructor(FirstName, LastName, StreetAddress, PostalCode, City, DateOfBirth, PhoneNumber, Email, Password) {
 
             this.firstName = FirstName,
             this.lastName = LastName,
@@ -35,9 +35,14 @@ class User {
 
 
     validateDateOfBirth(dateOfBirth) {
+        var today = new Date();
+        var birthDate = new Date(dateOfBirth)
         const regex = new RegExp('^\\d{4}(-)(((0)[0-9])|((1)[0-2]))(-)([0-2][0-9]|(3)[0-1])$');
         if (regex.test(dateOfBirth)) {
-            return dateOfBirth;
+            if(birthDate >= today){
+                throw new Error("Invalid Date Of Birth: " + dateOfBirth.substring(1, 10));
+            }
+            return birthDate;
         } else {
             throw new Error("Invalid Date Of Birth: " + dateOfBirth.substring(1, 10));
         }
