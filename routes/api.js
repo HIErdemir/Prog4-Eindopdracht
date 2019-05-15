@@ -1,11 +1,11 @@
 const express = require("express");
-const db = require("src/Database/mysql-connector.js");
+const db = require("./Database/mysql-connector");
 const assert = require("assert");
 const router = express.Router();
-const jwt = require("src/jwt/jwt.js");
-const User = require("src/models/user.js");
-const Apartment = require("src/models/apartment.js");
-const Reservation = require("src/models/reservation.js");
+const jwt = require("./helper/jwt");
+const User = require("./models/user");
+const Apartment = require("./routes/apartment");
+const Reservation = require("./routes/reservation");
 
 
 router.all("*", function(req, res, next) {

@@ -25,7 +25,9 @@
     "pretty-quick": "^1.10.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "test_org": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha --exit --reporter list"
   },
   "repository": {
     "type": "git",
