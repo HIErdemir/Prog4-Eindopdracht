@@ -1,17 +1,16 @@
 const express = require("express");
 const assert = require("assert");
 const router = express.Router();
-const User = require("./models/user");
-const db = require("./Database/mysql-connector");
+const User = require("C:\\Users\\halil\\WebstormProjects\\prog4-eindopdracht\\models\\user.js");
+const db = require("C:\\Users\\halil\\WebstormProjects\\prog4-eindopdracht\\Database\\mysql-connector.js");
 const bcrypt = require("bcryptjs");
-const jwt = require("./helper/jwt");
+const jwt = require("C:\\Users\\halil\\WebstormProjects\\prog4-eindopdracht\\helper\\jwt.js");
 
 const Rounds = 7;
 
 router.post("/register", function(req, res, next) {
 
   try {
-
     assert(typeof req.body.firstName === "string", "FirstName is not a string!");
     assert(typeof req.body.lastName === "string", "LastName is not a string!");
     assert(typeof req.body.streetAddress === "string", "StreetAddress is not a string!");
@@ -27,8 +26,10 @@ router.post("/register", function(req, res, next) {
     const user = new User(req.body.firstName,req.body.lastName,req.body.streetAddress,req.body.postalCode,
       req.body.city,req.body.dateOfBirth,req.body.phoneNumber,req.body.email, hash);
 
+    console.log(user);
+
     const query = {
-      sql: "INSERT INTO `DBUser`(FirstName, LastName, StreetAddress, PostalCode, City, DateOfBirth, PhoneNumber, EmailAddress, Password) VALUES (?,?,?,?,?,?,?,?,?)",
+      sql: "INSERT INTO `user`(FirstName, LastName, StreetAddress, PostalCode, City, DataOfBirth, PhoneNumber, EmailAddress, Password) VALUES (?,?,?,?,?,?,?,?,?)",
       values: [user.firstName,user.lastName,user.streetAddress,user.postalCode,user.city,user.dateOfBirth,user.phoneNumber,user.email,user.password],
       timeout: 2000
     };
@@ -42,6 +43,7 @@ router.post("/register", function(req, res, next) {
       }
     });
   } catch (ex) {
+    console.log(ex);
     next(ex);
   }
 });
@@ -49,25 +51,24 @@ router.post("/register", function(req, res, next) {
 router.post("/login/:email/:password", function(req, res, next) {
   try {
 
+
     assert(typeof req.params.email === "string", "Email is not a string!");
     assert(typeof req.params.password === "string", "Password is not a string!");
 
-
     // Construct query object
     const query = {
-      sql: "SELECT UserId, password FROM `user` WHERE `EmailAddress`=?",
+      sql: "SELECT UserId, Password FROM `user` WHERE `EmailAddress`=?",
       values: [req.params.email],
       timeout: 2000
     };
 
-    // Perform query
     db.query(query, (err, rows, fields) => {
       if (err) {
         next(err);
       } else {
         if (
           rows.length === 1 &&
-          bcrypt.compareSync(req.params.password, rows[0].password)
+          bcrypt.compareSync(req.params.password, rows[0].Password)
         ) {
           token = jwt.encodeToken(rows[0].userId);
           res.status(200).json({ token: token });
@@ -81,7 +82,8 @@ router.post("/login/:email/:password", function(req, res, next) {
   }
 });
 
-// Fall back, display some info
+
+
 router.all("*", function(req, res, next) {
   next(new Error("Unknown endpoint"));
 });

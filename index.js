@@ -1,10 +1,10 @@
-const config = require("./config/config.json");
+const config = require("C:\\Users\\halil\\WebstormProjects\\prog4-eindopdracht\\config\\config.json");
 const express = require("express");
 const bodyParser = require("body-parser");
-const auth = require("./routes/auth");
-const api = require("./routes/api");
+const auth = require("C:\\Users\\halil\\WebstormProjects\\prog4-eindopdracht\\routes\\auth.js");
+const api = require("C:\\Users\\halil\\WebstormProjects\\prog4-eindopdracht\\routes\\api.js");
 const logger = require("tracer").dailyfile({
-    root: "C:\\Users\\halil\\WebstormProjects\\prog4-eindopdracht\\src\\logs",
+    root: "./logs",
     maxLogFiles: 10,
     allLogsFileName: "verhuren",
     format: "{{timestamp}} <{{title}}> {{message}} (in {{file}}:{{line}})",
@@ -23,20 +23,17 @@ app.all("*", function(req, res, next) {
 });
 
 app.use("/auth", auth);
-
-
-;
 app.use("/api", api);
 
 function errorLoggerHandler(err, req, res, next) {
-    logger.error("%s", err.message);
+    logger.error("%s",err.message);
     next(err);
 }
 
 
 function errorResponseHandler(err, req, res, next) {
     res.status(500);
-    res.json({ mgs: "Go, you hacker!" });
+    res.json({ mgs: "error" });
 }
 
 

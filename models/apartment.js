@@ -10,6 +10,7 @@ class Apartment {
     }
 
 
+
     validatePostalCode(postalcode) {
         const regex = new RegExp('^([0-9]{4})([\\s])?(?!SD|SA|SS)([A-Z]{2})$');
         if (regex.test(postalcode)) {
