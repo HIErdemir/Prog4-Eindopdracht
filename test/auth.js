@@ -56,4 +56,14 @@ describe('registeren en inloggen', () => {
       })
   });
 
+  it('registeren verwijderen', function (done) {
+    chai.request(server)
+      .delete('/auth/login')
+      .set('content-type', 'application/json')
+      .end(function(err, res, body) {
+        res.should.have.status(200);
+        done()
+      })
+  });
+
 });

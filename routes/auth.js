@@ -82,6 +82,34 @@ router.post("/login/:email/:password", function(req, res, next) {
   }
 });
 
+router.delete("/login", function(req, res, next) {
+
+
+
+  const query = {
+    sql: `DELETE FROM user WHERE EmailAddress = ?;`,
+    values: ["halil@test.nl"],
+    timeout: 2000
+  };
+
+  try {
+
+    db.query(query, (err, rows, fields) => {
+      if(err) {
+        next(err)
+      } else {
+        try {
+          res.status(200).json("succes")
+        } catch(err) {
+          next(err)
+        }
+      }
+    })
+  } catch(err) {
+    next(err)
+  }
+});
+
 
 
 router.all("*", function(req, res, next) {
