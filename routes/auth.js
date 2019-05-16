@@ -88,7 +88,7 @@ router.delete("/login", function(req, res, next) {
 
   const query = {
     sql: `DELETE FROM user WHERE EmailAddress = ?;`,
-    values: [halil@test.nl],
+    values: ["halil@test.nl"],
     timeout: 2000
   };
 
