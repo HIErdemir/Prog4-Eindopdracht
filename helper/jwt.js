@@ -1,23 +1,23 @@
-const config = require("../config/config.json");
+const config = require("C:\\Users\\halil\\WebstormProjects\\prog4-eindopdracht\\config\\config.json");
 const moment = require("moment");
 const jwt = require("jwt-simple");
 
 
-function encodeToken(username) {
+function encodeToken(userId) {
     const playload = {
         exp: moment()
             .add(10, "days")
             .unix(),
         iat: moment().unix(),
-        sub: username
+        sub: userId
     };
-    return jwt.encode(playload, settings.remote.secretkey);
+    return jwt.encode(playload, config.remote.secretkey);
 }
 
 
 function decodeToken(token, cb) {
     try {
-        const payload = jwt.decode(token, settings.remote.secretkey);
+        const payload = jwt.decode(token, config.remote.secretkey);
 
         // Check if the token has expired
         if (moment().unix() > payload.exp) {

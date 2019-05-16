@@ -13,6 +13,7 @@
     "express": "^4.16.4",
     "jwt-simple": "^0.5.6",
     "moment": "^2.24.0",
+    "mssql": "^5.1.0",
     "mysql": "^2.17.1",
     "nodemon": "^1.19.0",
     "tedious": "^6.1.1",
@@ -23,8 +24,14 @@
     "prettier": "^1.17.0",
     "pretty-quick": "^1.10.0"
   },
+  "engines": {
+    "node": "10.14.0",
+    "npm": "6.4.1"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "test_org": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha --exit --reporter list"
   },
   "repository": {
     "type": "git",

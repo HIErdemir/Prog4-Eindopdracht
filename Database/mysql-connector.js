@@ -1,6 +1,6 @@
-const mysql = require('mysql')
-const config = require("src/config/config.json")
-const logger = require("tracer").colorConsole()
+const mysql = require('mysql');
+const config = require("C:\\Users\\halil\\WebstormProjects\\prog4-eindopdracht\\config\\config.json");
+const logger = require("tracer").colorConsole();
 
 
 const connectionSettings = {
@@ -9,7 +9,7 @@ const connectionSettings = {
     user: process.env.DB_USER || config.remote.dbUsername,
     password: process.env.DB_PASSWORD || config.remote.dbPassword,
     database: process.env.DB_DATABASE || config.remote.dbSchema,
-    port: config.remote.port,
+    port: 3306,
     debug: false
 };
 
