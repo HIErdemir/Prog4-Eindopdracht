@@ -1,10 +1,10 @@
 const express = require("express");
 const assert = require("assert");
 const router = express.Router();
-const User = require("C:\\Users\\halil\\WebstormProjects\\prog4-eindopdracht\\models\\user.js");
-const db = require("C:\\Users\\halil\\WebstormProjects\\prog4-eindopdracht\\Database\\mysql-connector.js");
+const User = require("..\\models\\user.js");
+const db = require("..\\Database\\mysql-connector.js");
 const bcrypt = require("bcryptjs");
-const jwt = require("C:\\Users\\halil\\WebstormProjects\\prog4-eindopdracht\\helper\\jwt.js");
+const jwt = require("..\\helper\\jwt.js");
 
 const Rounds = 7;
 

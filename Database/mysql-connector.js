@@ -1,5 +1,5 @@
 const mysql = require('mysql');
-const config = require("C:\\Users\\halil\\WebstormProjects\\prog4-eindopdracht\\config\\config.json");
+const config = require("..\\config\\config.json");
 const logger = require("tracer").colorConsole();
 
 

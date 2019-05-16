@@ -1,11 +1,11 @@
 const express = require("express");
-const db = require("C:\\Users\\halil\\WebstormProjects\\prog4-eindopdracht\\Database\\mysql-connector.js");
+const db = require("..\\Database\\mysql-connector.js");
 const assert = require("assert");
 const router = express.Router();
-const jwt = require("C:\\Users\\halil\\WebstormProjects\\prog4-eindopdracht\\helper\\jwt.js");
-const User = require("C:\\Users\\halil\\WebstormProjects\\prog4-eindopdracht\\models\\user.js");
-const Apartment = require("C:\\Users\\halil\\WebstormProjects\\prog4-eindopdracht\\models\\apartment.js");
-const Reservation = require("C:\\Users\\halil\\WebstormProjects\\prog4-eindopdracht\\models\\reservation.js");
+const jwt = require("..\\helper\\jwt.js");
+const User = require("..\\models\\user.js");
+const Apartment = require("..\\models\\apartment.js");
+const Reservation = require("..\\models\\reservation.js");
 
 
 router.all("*", function(req, res, next) {

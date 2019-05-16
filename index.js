@@ -1,8 +1,8 @@
-const config = require("C:\\Users\\halil\\WebstormProjects\\prog4-eindopdracht\\config\\config.json");
+const config = require("..\\config\\config.json");
 const express = require("express");
 const bodyParser = require("body-parser");
-const auth = require("C:\\Users\\halil\\WebstormProjects\\prog4-eindopdracht\\routes\\auth.js");
-const api = require("C:\\Users\\halil\\WebstormProjects\\prog4-eindopdracht\\routes\\api.js");
+const auth = require("..\\routes\\auth.js");
+const api = require("..\\routes\\api.js");
 const logger = require("tracer").dailyfile({
     root: "./logs",
     maxLogFiles: 10,

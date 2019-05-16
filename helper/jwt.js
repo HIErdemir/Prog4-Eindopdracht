@@ -1,4 +1,4 @@
-const config = require("C:\\Users\\halil\\WebstormProjects\\prog4-eindopdracht\\config\\config.json");
+const config = require("..\\config\\config.json");
 const moment = require("moment");
 const jwt = require("jwt-simple");
 
