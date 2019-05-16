@@ -102,9 +102,27 @@ router.get("/appartments/:id", function(req, res, next) {
         timeout: 2000
     };
 
+    const reseverinQuery = {
+        sql: `SELECT StartDate, EndDate Status 
+        FROM reservation WHERE ApartmentId = ?;`,
+        values: [req.params.id],
+        timeout: 2000
+    };
+
 
     try {
         db.query(guery, (err, rows, fields) => {
+            if(err) {
+                next(err)
+            } else {
+                try {
+                    res.status(200).json(rows)
+                } catch(err) {
+                    next(err)
+                }
+            }
+        })
+        db.query(reseverinQuery, (err, rows, fields) => {
             if(err) {
                 next(err)
             } else {
@@ -139,7 +157,7 @@ router.put("/appartments/:id", function(req, res, next) {
     };
 
 
-    try {rst
+    try {
         db.query(oldInfoApartmentQuery, (err, rows, fields) => {
             if(err) {
                 next(err)
@@ -166,7 +184,7 @@ router.put("/appartments/:id", function(req, res, next) {
 
         const updateIfnoApartmentQuery = {
             sql: `UPDATE table SET StreetAddress = ?, PostalCode = ?, City = ? Description = ? 
-    WHERE ApartmentId = ?;`,
+                    WHERE ApartmentId = ?;`,
             values: [apartment.streetAddress,apartment.postalCode,apartment.city,apartment.description],
             timeout: 2000
         };
